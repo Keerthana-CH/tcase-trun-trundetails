@@ -18,36 +18,21 @@ public class TestRun{
     private LocalTime testEndTime;
     private Duration testRunDuration;
     private String testRunResult;
-    private String release;
+    private String released;
     private Long buildNumber;
     private String tag;
     private Boolean isDeleted;
     private Long lastViewedById;
-    private LocalDate LastViewedDate;
+    private LocalDate lastViewedDate;
 
     @ManyToOne
-    @JoinColumn(name="testCase_id")
+    @JoinColumn(name="test_case_id")
     private TestCase testCase;
 
     @OneToOne(mappedBy = "testRun")
     private TestRunDetails testRunDetails;
 
-    public TestRun(Long id, Long testRunExecutedById, Long testRunExecutedRelease, LocalTime testStartTime, LocalTime testEndTime, Duration testRunDuration, String testRunResult, String release, Long buildNumber, String tag, Boolean isDeleted, Long lastViewedById, LocalDate lastViewedDate, TestCase testCase) {
-        this.id = id;
-        this.testRunExecutedById = testRunExecutedById;
-        this.testRunExecutedRelease = testRunExecutedRelease;
-        this.testStartTime = testStartTime;
-        this.testEndTime = testEndTime;
-        this.testRunDuration = testRunDuration;
-        this.testRunResult = testRunResult;
-        this.release = release;
-        this.buildNumber = buildNumber;
-        this.tag = tag;
-        this.isDeleted = isDeleted;
-        this.lastViewedById = lastViewedById;
-        LastViewedDate = lastViewedDate;
-        this.testCase = testCase;
-    }
+
 
     public TestRun() {
 
@@ -109,12 +94,12 @@ public class TestRun{
         this.testRunResult = testRunResult;
     }
 
-    public String getRelease() {
-        return release;
+    public String getReleased() {
+        return released;
     }
 
-    public void setRelease(String release) {
-        this.release = release;
+    public void setReleased(String released) {
+        this.released = released;
     }
 
     public Long getBuildNumber() {
@@ -150,11 +135,11 @@ public class TestRun{
     }
 
     public LocalDate getLastViewedDate() {
-        return LastViewedDate;
+        return lastViewedDate;
     }
 
     public void setLastViewedDate(LocalDate lastViewedDate) {
-        LastViewedDate = lastViewedDate;
+        this.lastViewedDate = lastViewedDate;
     }
 
     public TestCase getTestCase() {
@@ -163,6 +148,33 @@ public class TestRun{
 
     public void setTestCase(TestCase testCase) {
         this.testCase = testCase;
+    }
+
+
+    public TestRunDetails getTestRunDetails() {
+        return testRunDetails;
+    }
+
+    public void setTestRunDetails(TestRunDetails testRunDetails) {
+        this.testRunDetails = testRunDetails;
+    }
+
+    public TestRun(Long id, Long testRunExecutedById, Long testRunExecutedRelease, LocalTime testStartTime, LocalTime testEndTime, Duration testRunDuration, String testRunResult, String released, Long buildNumber, String tag, Boolean isDeleted, Long lastViewedById, LocalDate lastViewedDate, TestCase testCase, TestRunDetails testRunDetails) {
+        this.id = id;
+        this.testRunExecutedById = testRunExecutedById;
+        this.testRunExecutedRelease = testRunExecutedRelease;
+        this.testStartTime = testStartTime;
+        this.testEndTime = testEndTime;
+        this.testRunDuration = testRunDuration;
+        this.testRunResult = testRunResult;
+        this.released = released;
+        this.buildNumber = buildNumber;
+        this.tag = tag;
+        this.isDeleted = isDeleted;
+        this.lastViewedById = lastViewedById;
+        this.lastViewedDate = lastViewedDate;
+        this.testCase = testCase;
+        this.testRunDetails = testRunDetails;
     }
 
     @Override
@@ -175,13 +187,14 @@ public class TestRun{
                 ", testEndTime=" + testEndTime +
                 ", testRunDuration=" + testRunDuration +
                 ", testRunResult='" + testRunResult + '\'' +
-                ", release='" + release + '\'' +
+                ", released='" + released + '\'' +
                 ", buildNumber=" + buildNumber +
                 ", tag='" + tag + '\'' +
                 ", isDeleted=" + isDeleted +
                 ", lastViewedById=" + lastViewedById +
-                ", LastViewedDate=" + LastViewedDate +
+                ", lastViewedDate=" + lastViewedDate +
                 ", testCase=" + testCase +
+                ", testRunDetails=" + testRunDetails +
                 '}';
     }
 }

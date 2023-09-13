@@ -146,7 +146,15 @@ public class TestCase {
         this.lastViewedDate = lastViewedDate;
     }
 
-    public TestCase(Long id, String name, String description, Long createdByUserId, LocalDate createdDate, String testType, Long testSuiteId, Long testPlanId, Long projectId, String createdRelease, LocalDate lastModifiedDate, Boolean isDeleted, Long lastModifiedByUserId, LocalDate lastViewedDate) {
+    public Set<TestRun> getTestRuns() {
+        return testRuns;
+    }
+
+    public void setTestRuns(Set<TestRun> testRuns) {
+        this.testRuns = testRuns;
+    }
+
+    public TestCase(Long id, String name, String description, Long createdByUserId, LocalDate createdDate, String testType, Long testSuiteId, Long testPlanId, Long projectId, String createdRelease, LocalDate lastModifiedDate, Boolean isDeleted, Long lastModifiedByUserId, LocalDate lastViewedDate, Set<TestRun> testRuns) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -161,6 +169,7 @@ public class TestCase {
         this.isDeleted = isDeleted;
         this.lastModifiedByUserId = lastModifiedByUserId;
         this.lastViewedDate = lastViewedDate;
+        this.testRuns = testRuns;
     }
 
     @Override
@@ -180,6 +189,7 @@ public class TestCase {
                 ", isDeleted=" + isDeleted +
                 ", lastModifiedByUserId=" + lastModifiedByUserId +
                 ", lastViewedDate=" + lastViewedDate +
+                ", testRuns=" + testRuns +
                 '}';
     }
 }
